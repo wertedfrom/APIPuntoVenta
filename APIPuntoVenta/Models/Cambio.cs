@@ -41,7 +41,7 @@ namespace APIPuntoVenta.Models
 					string lastElementOfMessage = mensajeAProducir.ElementAt(mensajeAProducir.Count - 1);
 					mensajeAProducir.RemoveAt(mensajeAProducir.Count - 1);
 					string message = String.Join(", ", mensajeAProducir);
-					return String.Concat(message, " e ", lastElementOfMessage);
+					return String.Concat("Entregar ", message, " e ", lastElementOfMessage);
 				}
 			}
 		}
