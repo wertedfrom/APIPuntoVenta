@@ -29,6 +29,50 @@ namespace APIPuntoVenta.Controllers
 			}
 
 			Cambio cambio = new Cambio();
+			decimal diferencia = totalPagado - totalAPagar;
+			decimal restante = diferencia;
+
+			if (restante >= 100) {
+				cambio.BRL100 = (int)restante / 100;
+				restante = restante - (cambio.BRL100 * 100);
+			}
+
+			if (restante >= 50)
+			{
+				cambio.BRL50 = (int)restante / 50;
+				restante = restante - (cambio.BRL50 * 50);
+			}
+
+			if (restante >= 20)
+			{
+				cambio.BRL20 = (int)restante / 20;
+				restante = restante - (cambio.BRL20 * 20);
+			}
+
+			if (restante >= 10)
+			{
+				cambio.BRL10 = (int)restante / 10;
+				restante = restante - (cambio.BRL10 * 10);
+			}
+
+			//if (restante >= 0.50)
+			//{
+			//	cambio.R050 = restante / 0.5 ;
+			//	restante = restante - (cambio.BRL10 * 10);
+			//}
+			//if (restante >= 10)
+			//{
+			//	cambio.BRL10 = (int)restante / 10;
+			//	restante = restante - (cambio.BRL10 * 10);
+			//}
+			//if (restante >= 10)
+			//{
+			//	cambio.BRL10 = (int)restante / 10;
+			//	restante = restante - (cambio.BRL10 * 10);
+			//}
+
+
+
 
 			return Ok(cambio);
 		}

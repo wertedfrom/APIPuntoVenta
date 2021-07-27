@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace APIPuntoVenta.Models
@@ -20,8 +21,28 @@ namespace APIPuntoVenta.Models
 		{
 			get
 			{
-				string message = "Entregar ";
-				return message;
+				List<string> mensajeAProducir = new List<string>();
+				if (BRL100 > 0) mensajeAProducir.Add($"{BRL100} nota/s de R$100");
+				if (BRL50 > 0) mensajeAProducir.Add($"{BRL50} nota/s de R$50");
+				if (BRL20 > 0) mensajeAProducir.Add($"{BRL20} nota/s de R$20");
+				if (BRL10 > 0) mensajeAProducir.Add($"{BRL10} nota/s de R$10");
+
+				if (!mensajeAProducir.Any())
+				{
+					return "No hay cambio para devolver. El pago fue justo.";
+				}
+
+				if (mensajeAProducir.Count == 1)
+				{
+					return "Entregar " + mensajeAProducir[0];
+				}
+				else
+				{
+					string lastElementOfMessage = mensajeAProducir.ElementAt(mensajeAProducir.Count - 1);
+					mensajeAProducir.RemoveAt(mensajeAProducir.Count - 1);
+					string message = String.Join(", ", mensajeAProducir);
+					return String.Concat(message, " e ", lastElementOfMessage);
+				}
 			}
 		}
 	}
