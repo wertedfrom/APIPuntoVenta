@@ -20,11 +20,13 @@ namespace APIPuntoVenta.Controllers
 		[HttpPost("CalcularCambio")]
 		public ActionResult<Cambio> CalcularCambio(decimal totalAPagar, decimal totalPagado)
 		{
-			if (totalAPagar <= 0) {
+			if (totalAPagar <= 0)
+			{
 				return BadRequest("El total a Pagar no puede ser igual o menor a 0");
 			}
 
-			if (totalPagado < totalAPagar) {
+			if (totalPagado < totalAPagar)
+			{
 				return BadRequest("El total pagado es menor al importe a pagar. Solicite al cliente completar el monto con el dinero faltante.");
 			}
 
@@ -32,7 +34,8 @@ namespace APIPuntoVenta.Controllers
 			decimal diferencia = totalPagado - totalAPagar;
 			decimal restante = diferencia;
 
-			if (restante >= 100) {
+			if (restante >= 100)
+			{
 				cambio.BRL100 = (int)restante / 100;
 				restante = restante - (cambio.BRL100 * 100);
 			}
@@ -55,24 +58,29 @@ namespace APIPuntoVenta.Controllers
 				restante = restante - (cambio.BRL10 * 10);
 			}
 
-			//if (restante >= 0.50)
-			//{
-			//	cambio.R050 = restante / 0.5 ;
-			//	restante = restante - (cambio.BRL10 * 10);
-			//}
-			//if (restante >= 10)
-			//{
-			//	cambio.BRL10 = (int)restante / 10;
-			//	restante = restante - (cambio.BRL10 * 10);
-			//}
-			//if (restante >= 10)
-			//{
-			//	cambio.BRL10 = (int)restante / 10;
-			//	restante = restante - (cambio.BRL10 * 10);
-			//}
+			if (restante >= (decimal)0.50)
+			{
+				cambio.R050 = (int) (restante / (decimal)0.50);
+				restante = restante - (decimal)(cambio.R050 * 0.50);
+			}
 
+			if (restante >= (decimal)0.10)
+			{
+				cambio.R010 = (int)(restante / (decimal)0.10);
+				restante = restante - (decimal)(cambio.R010 * 0.10);
+			}
 
+			if (restante >= (decimal)0.05)
+			{
+				cambio.R005 = (int)(restante / (decimal)0.05);
+				restante = restante - (decimal)(cambio.R005 * 0.05);
+			}
 
+			if (restante >= (decimal)0.01)
+			{
+				cambio.R001 = (int)(restante / (decimal)0.01);
+				restante = restante - (decimal)(cambio.R001 * 0.01);
+			}
 
 			return Ok(cambio);
 		}

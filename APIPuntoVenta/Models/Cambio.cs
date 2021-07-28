@@ -22,10 +22,14 @@ namespace APIPuntoVenta.Models
 			get
 			{
 				List<string> mensajeAProducir = new List<string>();
-				if (BRL100 > 0) mensajeAProducir.Add($"{BRL100} nota/s de R$100");
-				if (BRL50 > 0) mensajeAProducir.Add($"{BRL50} nota/s de R$50");
-				if (BRL20 > 0) mensajeAProducir.Add($"{BRL20} nota/s de R$20");
-				if (BRL10 > 0) mensajeAProducir.Add($"{BRL10} nota/s de R$10");
+				if (BRL100 > 0) mensajeAProducir.Add(String.Concat($"{BRL100} nota", ((BRL100 > 1) ? "s" : "")," de R$100"));
+				if (BRL50 > 0) mensajeAProducir.Add(String.Concat($"{BRL50} nota", ((BRL50 > 1) ? "s" : "")," de R$50"));
+				if (BRL20 > 0) mensajeAProducir.Add(String.Concat($"{BRL20} nota", ((BRL20 > 1) ? "s" : "")," de R$20"));
+				if (BRL10 > 0) mensajeAProducir.Add(String.Concat($"{BRL10} nota", ((BRL10 > 1) ? "s" : "")," de R$10"));
+				if (R050 > 0) mensajeAProducir.Add(String.Concat($"{R050} moeda",((R050 > 1)?"s":"")," de R$0.50"));
+				if (R010 > 0) mensajeAProducir.Add(String.Concat($"{R010} moeda",((R010 > 1)?"s":"")," de R$0.10"));
+				if (R005 > 0) mensajeAProducir.Add(String.Concat($"{R005} moeda",((R005 > 1)?"s":"")," de R$0.05"));
+				if (R001 > 0) mensajeAProducir.Add(String.Concat($"{R001} moeda",((R001 > 1)?"s":"")," de R$0.01"));
 
 				if (!mensajeAProducir.Any())
 				{
