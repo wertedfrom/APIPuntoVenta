@@ -1,4 +1,5 @@
 ﻿using APIPuntoVenta.Models;
+using APIPuntoVenta.Repository;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
@@ -11,10 +12,17 @@ namespace APIPuntoVenta.Controllers
 	[Route("[controller]")]
 	public class CobroController : ControllerBase
 	{
-		[HttpGet]
-		public string Get()
+		private readonly ITransaccionRepository _transaccionRepository;
+
+		public CobroController(ITransaccionRepository transaccionRepository)
 		{
-			return "Llegue";
+			_transaccionRepository = transaccionRepository;
+		}
+
+		[HttpGet]
+		public ActionResult<List<Transaccion>> Get()
+		{
+			return _transaccionRepository.GetAll();
 		}
 
 		[HttpPost("CalcularCambio")]
@@ -81,6 +89,8 @@ namespace APIPuntoVenta.Controllers
 				cambio.R001 = (int)(restante / (decimal)0.01);
 				restante -= (decimal)(cambio.R001 * 0.01);
 			}
+
+
 
 			return Ok(cambio);
 		}
