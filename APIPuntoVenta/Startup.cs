@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.OpenApi.Models;
 
 namespace APIPuntoVenta
 {
@@ -26,6 +27,7 @@ namespace APIPuntoVenta
 		public void ConfigureServices(IServiceCollection services)
 		{
 			services.AddControllers();
+			AddSwagger(services);
 		}
 
 		// This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -38,6 +40,12 @@ namespace APIPuntoVenta
 
 			app.UseHttpsRedirection();
 
+			app.UseSwagger();
+			app.UseSwaggerUI(c =>
+			{
+				c.SwaggerEndpoint("/swagger/v1/swagger.json", "Punto de Venta API V1");
+			});
+
 			app.UseRouting();
 
 			app.UseAuthorization();
@@ -45,6 +53,27 @@ namespace APIPuntoVenta
 			app.UseEndpoints(endpoints =>
 			{
 				endpoints.MapControllers();
+			});
+		}
+
+		private void AddSwagger(IServiceCollection services)
+		{
+			services.AddSwaggerGen(options =>
+			{
+				var groupName = "v1";
+
+				options.SwaggerDoc(groupName, new OpenApiInfo
+				{
+					Title = $"Punto de Venta API {groupName}",
+					Version = groupName,
+					Description = "Endpoints Punto de Venta API",
+					Contact = new OpenApiContact
+					{
+						Name = "Totvs",
+						Email = string.Empty,
+						Url = new Uri("https://es.totvs.com/"),
+					}
+				});
 			});
 		}
 	}
