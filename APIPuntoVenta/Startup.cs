@@ -32,7 +32,8 @@ namespace APIPuntoVenta
 			services.AddDbContext<AppDbContext>(options =>
 				options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 			
-			//Usar la implementacion de repository deseada, actualmente usa DAPPER
+			//Usar la implementacion de repository deseada comentando una línea y descomentando la otra
+			//Actualmente se usa DAPPER
 			//services.AddScoped<ITransaccionRepository, TransaccionRepositoryEF>();
 			services.AddScoped<ITransaccionRepository, TransaccionRepositoryDapper>();
 			

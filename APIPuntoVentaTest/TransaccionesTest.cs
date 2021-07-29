@@ -17,8 +17,8 @@ namespace APIPuntoVentaTest
 
 			var cambio = Calculador.CalcularCambio(diferencia);
 
-			Assert.AreNotEqual(cambio.message, "No hay cambio para devolver. El pago fue justo.");
-			Console.WriteLine("Mensaje: " + cambio.message);
+			Assert.AreNotEqual(cambio.Mensaje, "No hay cambio para devolver. El pago fue justo.");
+			Console.WriteLine("Mensaje: " + cambio.Mensaje);
 		}
 
 		[TestMethod]
@@ -28,8 +28,8 @@ namespace APIPuntoVentaTest
 
 			var cambio = Calculador.CalcularCambio(diferencia);
 
-			Assert.AreEqual(cambio.message, "No hay cambio para devolver. El pago fue justo.");
-			Console.WriteLine("Mensaje: " + cambio.message);
+			Assert.AreEqual(cambio.Mensaje, "No hay cambio para devolver. El pago fue justo.");
+			Console.WriteLine("Mensaje: " + cambio.Mensaje);
 		}
 	}
 }

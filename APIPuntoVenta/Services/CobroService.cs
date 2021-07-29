@@ -30,7 +30,7 @@ namespace APIPuntoVenta.Services
 				ImporteCompra = totalAPagar,
 				ImportePago = totalPagado,
 				Cambio = diferencia,
-				MensajeCambio = cambio.message,
+				MensajeCambio = cambio.Mensaje,
 				CreatedAt = DateTime.Now
 			};
 
