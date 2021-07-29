@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31025.194
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIPuntoVenta", "APIPuntoVenta\APIPuntoVenta.csproj", "{F3ED7AC0-E2A4-48F6-9E9E-54FA7631C4A3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "APIPuntoVenta", "APIPuntoVenta\APIPuntoVenta.csproj", "{F3ED7AC0-E2A4-48F6-9E9E-54FA7631C4A3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIPuntoVentaTest", "APIPuntoVentaTest\APIPuntoVentaTest.csproj", "{2F90CBB3-EB8F-4263-8DC9-E60C4929078D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{F3ED7AC0-E2A4-48F6-9E9E-54FA7631C4A3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3ED7AC0-E2A4-48F6-9E9E-54FA7631C4A3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3ED7AC0-E2A4-48F6-9E9E-54FA7631C4A3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F90CBB3-EB8F-4263-8DC9-E60C4929078D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F90CBB3-EB8F-4263-8DC9-E60C4929078D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F90CBB3-EB8F-4263-8DC9-E60C4929078D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F90CBB3-EB8F-4263-8DC9-E60C4929078D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

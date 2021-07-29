@@ -26,14 +26,8 @@ namespace APIPuntoVenta.Repository
 			var sql = "INSERT INTO Transacciones (Id, ImporteCompra, ImportePago, Cambio, MensajeCambio, CreatedAt) " +
 						"VALUES(@Id, @ImporteCompra, @ImportePago, @Cambio, @MensajeCambio, @CreatedAt);";
 			
-			return db.Query<Transaccion>(sql, new { 
-				transaccion.Id,
-				transaccion.ImporteCompra,
-				transaccion.ImportePago,
-				transaccion.Cambio,
-				transaccion.MensajeCambio,
-				transaccion.CreatedAt
-			}).Single();
+			db.Query<Transaccion>(sql, transaccion);
+			return transaccion;
 		}
 
 		public Transaccion Find(Guid id)
@@ -44,19 +38,23 @@ namespace APIPuntoVenta.Repository
 
 		public List<Transaccion> GetAll()
 		{
-			var sql = "SELECT * FROM Transacciones";
+			var sql = "SELECT * FROM Transacciones ORDER BY CreatedAt DESC;";
 			return db.Query<Transaccion>(sql).ToList();
 		}
 
 		public void Remove(Guid id)
 		{
-			
+			var sql = "DELETE * FROM Transacciones WHERE Id = @Id";
+			db.Execute(sql, new { @Id = id });
 			return;
 		}
 
 		public Transaccion Update(Transaccion transaccion)
 		{
-			
+			var sql = "UPDATE transacciones "+
+				"SET ImporteCompra = @ImporteCompra, ImportePago = @ImportePago, Cambio = @Cambio, MensajeCambio = @MensajeCambio, " +
+				"CreatedAt = @CreatedAt WHERE Id = @Id";
+			db.Execute(sql, transaccion);
 			return transaccion;
 		}
 	}

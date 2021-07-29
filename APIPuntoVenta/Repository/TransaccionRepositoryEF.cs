@@ -31,7 +31,7 @@ namespace APIPuntoVenta.Repository
 
 		public List<Transaccion> GetAll()
 		{
-			return _db.Transacciones.ToList();
+			return _db.Transacciones.OrderByDescending(t =>t.CreatedAt).ToList();
 		}
 
 		public void Remove(Guid id)
