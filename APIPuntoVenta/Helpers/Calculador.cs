@@ -6,8 +6,12 @@ using System.Threading.Tasks;
 
 namespace APIPuntoVenta.Helpers
 {
-	public static class CalculadorCambio
+	public static class Calculador
 	{
+		public static decimal CalcularDiferencia(decimal totalPagado, decimal totalAPagar) { 
+			return totalPagado - totalAPagar;
+		}
+
 		public static Cambio CalcularCambio(decimal diferencia)
 		{
 
@@ -63,6 +67,11 @@ namespace APIPuntoVenta.Helpers
 			}
 
 			return cambio;
+		}
+
+		public static bool MenosDeNDecimales(decimal numero, int decimalesPermitidos)
+		{
+			return Decimal.Round(numero, decimalesPermitidos) == numero;
 		}
 	}
 }

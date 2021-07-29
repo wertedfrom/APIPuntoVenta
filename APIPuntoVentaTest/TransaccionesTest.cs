@@ -15,7 +15,7 @@ namespace APIPuntoVentaTest
 		{
 			var diferencia = (decimal)172.75;
 
-			var cambio = CalculadorCambio.CalcularCambio(diferencia);
+			var cambio = Calculador.CalcularCambio(diferencia);
 
 			Assert.AreNotEqual(cambio.message, "No hay cambio para devolver. El pago fue justo.");
 			Console.WriteLine("Mensaje: " + cambio.message);
@@ -26,7 +26,7 @@ namespace APIPuntoVentaTest
 		{
 			var diferencia = (decimal)0;
 
-			var cambio = CalculadorCambio.CalcularCambio(diferencia);
+			var cambio = Calculador.CalcularCambio(diferencia);
 
 			Assert.AreEqual(cambio.message, "No hay cambio para devolver. El pago fue justo.");
 			Console.WriteLine("Mensaje: " + cambio.message);
